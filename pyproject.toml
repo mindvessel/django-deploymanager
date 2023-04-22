@@ -1,0 +1,41 @@
+[project]
+name = "djmanage"
+dynamic = ["version"]
+authors = [{ name = "Vince Veselosky", email = "vince@veselosky.com" }]
+description = "Tool to manage simple Django production deployments."
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = ["psutil >= 5.9.5", "python-dotenv >= 1.0.0", "rich >= 13.3.4"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache License",
+    "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "ipython",
+    "isort",
+    "pip-tools",
+    "pycodestyle",
+    "pytest",
+    "pytest-cov",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/mindvessel/djmanage"
+"Bug Tracker" = "https://github.com/mindvessel/djmanage/issues"
+
+[project.scripts]
+djmanage = "djmanage:main"
+
+[build-system]
+# With setuptools-scm, package data files (e.g. templates) that are tracked by git will
+# be automatically detected and included. Without setuptools-scm, you would need to
+# specify a file pattern in MANIFEST.in to collect them.
+requires = ["setuptools>=65.0", "setuptools-scm>=7.0.5", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.dynamic]
+version = { attr = "djmanage.__version__" }
